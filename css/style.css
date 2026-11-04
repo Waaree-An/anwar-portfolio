@@ -44,6 +44,10 @@ body {
  .site-header {
     width: 100%;
     padding: 24px var(--page-padding);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: var(--color-background);
  }
  
  .navbar {
@@ -653,3 +657,54 @@ body {
     }
 
 }
+/* ================================
+   ACCESSIBILITY IMPROVEMENTS
+================================ */
+
+/* Smooth section navigation */
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Visible keyboard focus */
+
+a:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 5px;
+    border-radius: 2px;
+}
+
+/* Respect reduced-motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    /* ================================
+    SECTION SCROLL OFFSET
+    ================================ */
+
+    section[id] {
+    scroll-margin-top: 110px;
+    }
+}
+    /* ================================
+    SECTION VISUAL RHYTHM
+    ================================ */
+
+    .work-section,
+    .focus-section,
+    .profile-section {
+    border-top: 1px solid rgba(242, 244, 239, 0.08);
+    }
