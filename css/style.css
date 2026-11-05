@@ -70,23 +70,26 @@ body {
     text-decoration: none;
  }
  .brand-mark {
-    font-size: 28px;
+    font-family: Arial, sans-serif;
+    font-size: 30px;
     font-weight: 800;
-    letter-spacing: -2px;
- }
- .brand-descriptin {
+    letter-spacing: -2.5px;
+    line-height: 1;
+}
+
+.brand-description {
     display: flex;
     flex-direction: column;
-    gap: 4px;
-     
+    gap: 3px;
+
     font-family: var(--font-monospace);
     font-size: 9px;
-    line-height: 1.4;
-    letter-spacing: 0.8px;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 1px;
 
     color: var(--color-text-muted);
- }
-
+}
 /* NAvigation links ...*/
 .nav-links{
     display: flex;
@@ -106,7 +109,7 @@ body {
     font-weight: 500;
     transition: color 0.2s ease;
 }
-.nav-links a :hover{
+.nav-links a:hover{
     color: var(--color-accent);
 }
 
@@ -488,6 +491,19 @@ body {
     }
 
 }
+.profile-image {
+    display: block;
+    width: 100%;
+    max-width: 380px;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: center 25%;
+
+    border: 1px solid rgba(163, 255, 107, 0.2);
+    border-radius: 4px;
+
+    filter: saturate(0.85);
+}
 /* ================================
    CONTACT SECTION
 ================================ */
@@ -696,7 +712,12 @@ a:focus-visible {
     ================================ */
 
     section[id] {
-    scroll-margin-top: 110px;
+    scroll-margin-top: 140px;
+    }
+    @media (max-width: 600 px) {
+        section[id] {
+            scroll-margin-top: 170px;
+        }
     }
 }
     /* ================================
@@ -743,4 +764,129 @@ a:focus-visible {
 .project-link:focus-visible {
     outline: 2px solid var(--color-accent);
     outline-offset: 5px;
+}
+/* ================================
+   SKILLS SECTION
+================================ */
+
+.skills-section {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 100px var(--page-padding) 120px;
+
+    border-top: 1px solid rgba(242, 244, 239, 0.08);
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-top: 1px solid rgba(242, 244, 239, 0.15);
+    border-left: 1px solid rgba(242, 244, 239, 0.15);
+}
+
+.skill-group {
+    min-height: 190px;
+    padding: 28px;
+
+    border-right: 1px solid rgba(242, 244, 239, 0.15);
+    border-bottom: 1px solid rgba(242, 244, 239, 0.15);
+
+    transition: background-color 0.25s ease;
+}
+
+.skill-group:hover {
+    background-color: var(--color-surface);
+}
+
+.skill-index {
+    font-family: var(--font-monospace);
+    font-size: 11px;
+    color: var(--color-accent);
+}
+
+.skill-group h3 {
+    margin: 32px 0 12px;
+    font-size: 20px;
+    letter-spacing: -0.5px;
+}
+.skill-group p {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: 13px;
+    line-height: 1.8;
+}
+/* RESPONSIVE SKILLS */
+@media (max-width: 600px) {
+    .skills-section {
+        padding-top: 70px;
+        padding-bottom: 80px;
+    }
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+    .skill-group {
+        min-height: 155px;
+    }
+}
+/* ================================
+   WRITING & NOTES SECTION
+================================ */
+
+.writing-section {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 100px var(--page-padding) 120px;
+
+    border-top: 1px solid rgba(242, 244, 239, 0.08);
+}
+
+.writing-empty {
+    padding: 48px;
+    background-color: var(--color-surface);
+    border: 1px solid rgba(242, 244, 239, 0.08);
+}
+
+.writing-status {
+    font-family: var(--font-monospace);
+    font-size: 10px;
+    letter-spacing: 1.2px;
+    color: var(--color-accent);
+}
+
+.writing-empty h3 {
+    max-width: 550px;
+    margin: 32px 0 16px;
+
+    font-size: clamp(24px, 4vw, 36px);
+    line-height: 1.25;
+    letter-spacing: -1px;
+}
+
+.writing-empty p {
+    max-width: 520px;
+    margin: 0;
+
+    color: var(--color-text-muted);
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+/* RESPONSIVE WRITING SECTION */
+
+@media (max-width: 600px) {
+
+    .writing-section {
+        padding-top: 70px;
+        padding-bottom: 80px;
+    }
+
+    .writing-empty {
+        padding: 28px 24px;
+    }
+}
+.brand:hover .brand-mark {
+    color: var(--color-accent);
+}
+.brand:hover .brand-description {
+    color: var(--color-text);
 }
