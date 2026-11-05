@@ -1,16 +1,17 @@
-/* =================================
-   ANWAR JABBO - My DESIGN FOUNDATION
-================================= */
+/* As of I have read and understand from d/t sources
+its better to organize and put a foundation for ur css styling
+it'll simplify the process more and more. it helped me a lot when 
+choosing b/n styles, colors and fonts...etc.
+   
+ANWAR JABBO - My DESIGN FOUNDATION */
 
 :root {
-    /* Brand colors */
     --color-background: #101311;
     --color-surface: #1B211D;
     --color-text: #F2F4EF;
     --color-text-muted: #A0A69F;
-    --color-accent: #A3FF6B;
+    --color-accent: #360ee9;
 
-    /* Typography */
     --font-primary: Arial, sans-serif;
     --font-monospace: "Courier New", monospace;
 
@@ -18,48 +19,89 @@
     --container-width: 1200px;
     --page-padding: 24px;
 
-    /* Spacing */
     --space-sm: 8px;
     --space-md: 16px;
     --space-lg: 32px;
     --space-xl: 64px;
 }
 
-/* =================================
-   GLOBAL STYLES
-================================= */
-
-* {
+/* GLOBAL STYLES*/
+* { 
     box-sizing: border-box;
 }
-
 body {
     margin: 0;
     background-color: var(--color-background);
     color: var(--color-text);
     font-family: var(--font-primary);
 }
-
  /* Navigation of of the header*/
  .site-header {
     width: 100%;
     padding: 24px var(--page-padding);
-    position: sticky;
+    position:relative;
     top: 0;
     z-index: 100;
     background-color: var(--color-background);
  }
- 
  .navbar {
     max-width: var(--container-width);
     margin: 0 auto;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     gap: 32px;
  }
+ /* Mobile navigation control */
+
+.menu-toggle {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    overflow: hidden;
+}
+
+.menu-toggle-label {
+    display: none;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+}
+
+.menu-toggle-label span:not(.sr-only) {
+    display: block;
+    width: 23px;
+    height: 2px;
+    background-color: var(--color-text);
+    transition: background-color 0.2s ease;
+}
+
+.menu-toggle-label:hover span:not(.sr-only) {
+    background-color: var(--color-accent);
+}
+
+.menu-toggle:focus-visible + .menu-toggle-label {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 
  .brand {
     display: flex;
@@ -117,26 +159,53 @@ body {
 @media(max-width: 600px){
     .site-header{
         padding: 20px var(--page-padding);
-
     }
     .navbar {
         align-items: flex-start;
         flex-direction: column;
         gap: 24px ;   
     }
+    .nav-links {
+    display: none;
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 0;
+    right: 0;
 
-    .nav-links{
-        width: 100%;
-        justify-content: space-between;
-        gap: 12px;
-        flex-wrap: wrap;
-    
-    }
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+
+    padding: 12px 16px;
+    background-color: var(--color-surface);
+    border: 1px solid rgba(163, 255, 107, 0.18);
+    border-radius: 4px;
+}
+
+.menu-toggle:checked ~ .nav-links {
+    display: flex;
+}
+.nav-links li {
+    width: 100%;
+}
+.nav-links a {
+    display: block;
+    padding: 12px 4px;
+}
     .nav-links a{
         font-size: 12px;
-
     }
+    
+.menu-toggle-label {
+    display: flex;
+}
 
+.navbar {
+    position: relative;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
 }
 
 /*HERO SECTION*/
@@ -323,6 +392,17 @@ body {
     font-family: var(--font-monospace);
     font-size: 10px;
     letter-spacing: 0.8px;
+    color: var(--color-text-muted);
+}
+.project-tech {
+    margin-top: 12px;
+    margin-bottom: 16px;
+
+    font-family: var(--font-monospace);
+    font-size: 11px;
+    line-height: 1.8;
+    letter-spacing: 0.3px;
+
     color: var(--color-text-muted);
 }
 
